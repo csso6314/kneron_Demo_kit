@@ -1,0 +1,5 @@
+modelmanager temp已改為耐能底下
+RDS 照片上傳待測試
+RDS 相機節圖像數調整大小
+照片採集按住向左滑方開關閉相機
+寫requinment.txt pygame
