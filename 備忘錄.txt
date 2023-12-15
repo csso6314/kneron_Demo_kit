@@ -2,4 +2,8 @@ modelmanager temp已改為耐能底下
 RDS 照片上傳待測試
 RDS 相機節圖像數調整大小
 照片採集按住向左滑方開關閉相機
+模型下載 改成下載兩個
+KL520增加退出
+照片上傳 資料夾更新
+QT每頁增加退出
 寫requinment.txt pygame

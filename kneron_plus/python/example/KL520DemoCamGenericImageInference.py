@@ -1,7 +1,8 @@
 # ******************************************************************************
 #  Copyright (c) 2021-2022. Kneron Inc. All rights reserved.                   *
 # ******************************************************************************
-
+import pygame
+import numpy as np
 import os
 import sys
 import platform
@@ -167,14 +168,14 @@ def _result_receive_function(_device_group: kp.DeviceGroup) -> None:
                     color=(200, 200, 200),
                     thickness=1,
                     lineType=cv2.LINE_AA)
-        cv2.putText(img=temp_image,
-                    text='Press \'ESC\' to exit',
-                    org=(10, temp_image.shape[0] - 10),
-                    fontFace=cv2.FONT_HERSHEY_DUPLEX,
-                    fontScale=1,
-                    color=(200, 200, 200),
-                    thickness=1,
-                    lineType=cv2.LINE_AA)
+        #cv2.putText(img=temp_image,
+        #            text='Press \'ESC\' to exit',
+        #            org=(10, temp_image.shape[0] - 10),
+        #            fontFace=cv2.FONT_HERSHEY_DUPLEX,
+        #            fontScale=1,
+        #            color=(200, 200, 200),
+        #            thickness=1,
+        #            lineType=cv2.LINE_AA)
         
             
         with _LOCK:
@@ -182,12 +183,20 @@ def _result_receive_function(_device_group: kp.DeviceGroup) -> None:
 
     _RECEIVE_RUNNING = False
 
+def show_xy(event,x,y,flags,param):
+    global dots, draw ,break_flage
+    if event == 4:
+        cv2.destroyAllWindows()
+        break_flage=1
+        #dots.append([x,y])
 
 if __name__ == '__main__':
+    break_flage=0
     model_name=input('model:')
     MODEL_PATH=MODEL_PATH+model_name+'.nef'
     MODEL_FILE_PATH = os.path.join(PWD, MODEL_PATH)
     class_path=class_path+model_name+'.txt'
+    class_path = os.path.join(PWD, class_path)
 
     parser = argparse.ArgumentParser(description='KL520 Demo Camera Generic Image Inference Example.')
     parser.add_argument('-p',
@@ -284,11 +293,16 @@ if __name__ == '__main__':
 
     cv2.namedWindow('Generic Inference', cv2.WND_PROP_ASPECT_RATIO or cv2.WINDOW_GUI_EXPANDED)
     cv2.setWindowProperty('Generic Inference', cv2.WND_PROP_ASPECT_RATIO, cv2.WND_PROP_ASPECT_RATIO)
-
+    w = 640
+    h = 640
+    draw = np.zeros((h,w,4), dtype='uint8')
+    cv2.imshow('Generic Inference', draw)
+    cv2.setMouseCallback('Generic Inference', show_xy)
     while True:
-        with _LOCK:
-            if None is not _image_to_show:
-                cv2.imshow('Generic Inference', _image_to_show)
+        if break_flage==1 :
+            break
+        if None is not _image_to_show:
+            cv2.imshow('Generic Inference', _image_to_show)
 
         if (27 == cv2.waitKey(10)) or (not _SEND_RUNNING) or (not _RECEIVE_RUNNING):
             break

@@ -27,8 +27,8 @@ bucket_prefix = 'kneron'
 
 # RDS setting
 username = 'admin'     # RDS account
-password = '12345678'     # RDS password
-host = 'instai-web-rds.cvprqxu67qc8.us-east-1.rds.amazonaws.com'
+password = 'instai76666'     # RDS password
+host = 'instai-rds.cwxva4x4deuv.us-east-1.rds.amazonaws.com'
 RDS_port = '3306'         # RDS port
 #database = 'carview'   # RDS name
 database = 'myDB'

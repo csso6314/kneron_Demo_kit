@@ -20,19 +20,19 @@ file_destination = './uploaded'
 
 
 # initialize variables
-cpu_serial = "0X02"
-DeviceID = "0x7680"
+cpu_serial = "LAPTOP-KJAT43UT"
+DeviceID = "0x72"
 #folder = 'Pictures/Dinasour/'
 folder = 'Pictures/Helmet/'
 #project_name = "ProjectD"	# append project name when calling filename_append_project_name()
 
 username = 'admin'     # RDS account
-password = '12345678'     # RDS password
+password = 'instai76666'     # RDS password
 #host = 'carview.cvprqxu67qc8.us-east-1.rds.amazonaws.com'    # RDS address version1
 # 0921 RDS version2
 #host = 'db-carview-v2.cvprqxu67qc8.us-east-1.rds.amazonaws.com'    # RDS address version2
 #host = 'db-instai.cvprqxu67qc8.us-east-1.rds.amazonaws.com'
-host = 'instai-web-rds.cvprqxu67qc8.us-east-1.rds.amazonaws.com'
+host = 'instai-rds.cwxva4x4deuv.us-east-1.rds.amazonaws.com'
 port = '3306'         # RDS port
 #database = 'carview'   # RDS name
 database = 'myDB'     # version2
